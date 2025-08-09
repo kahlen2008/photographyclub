@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Photography Club - Activities</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    /* Carousel Images and container styling */
+    #highlightCarousel {
+      max-width: 50%;   /* Adjust width as needed */
+      margin: 0 auto;   /* Center carousel horizontally */
+      position: relative; /* For control button positioning */
+    }
+    #highlightCarousel .carousel-inner {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    #highlightCarousel .carousel-inner img {
+      display: block;
+      max-width: 100%;    /* Fill the carousel width */
+      height: auto;
+      margin: 0 auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    #highlightCarousel .carousel-control-prev,
+    #highlightCarousel .carousel-control-next {
+      width: 40px;          /* Smaller control buttons */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #highlightCarousel .carousel-control-prev {
+      left: 5px;            /* Close to image edge */
+    }
+    #highlightCarousel .carousel-control-next {
+      right: 5px;           /* Close to image edge */
+    }
+
+    /* Video Style */
+    video {
+      max-width: 75%;  /* Fill its container */
+      height:50%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Table Styling */
+    .table {
+      font-size: 1rem;
+    }
+
+    /* Hero banner styling */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url('images/background1.jpeg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeInHero 1s ease-out both;
+      color: white; /* ensure text is white */
+    }
+
+    @keyframes fadeInHero {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional container styling for hero content */
+    .hero-content {
+      max-width: 700px;
+      padding: 0 15px;
+    }
+
+    /* Footer icons and accessibility */
+    footer small i {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      font-size: 1.3rem;
+      color: #ffffff;
+    }
+
+    footer small a {
+      text-decoration: none;
+      outline: none;
+      border: none;
+    } 
+
+    footer small a:focus,
+    footer small a:active {
+      outline: none;
+      box-shadow: none;
+    }
+
+    footer small a i {
+      vertical-align: middle;
+    }
+
+    footer small i:hover {
+      transform: scale(1.2);
+      color: #0d6efd;
+    }
+    table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.schedule-table td:nth-child(1),
+.schedule-table td:nth-child(2) {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-camera-fill me-2"></i>Photography Club</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="activities.html">Activities</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="join.html">Join Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header with reveal -->
+  <header class="hero text-white text-center reveal">
+    <div class="container hero-content">
+      <h1 class="display-3 fw-bold">Our Activities</h1>
+    </div>
+  </header>
+
+<div class="container">
+    <h1>📸 Photography CCA Club — Weekly Schedule</h1>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Activity</th>
+          <th>Location</th>
+          <th>Time</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Tuesday</td>
+          <td>Editing Workshop</td>
+          <td>Lab 5</td>
+          <td>6:30 PM – 8:00 PM</td>
+          <td>Post-processing tutorials using Lightroom & Photoshop.</td>
+        </tr>
+        <tr>
+          <td>Photo Review</td>
+          <td>Lab 5</td>
+          <td>8:00 PM – 8:30 PM</td>
+          <td>Peer feedback and group critique on recent shoots.</td>
+        </tr>
+        <tr>
+          <td rowspan="2">Thursday</td>
+          <td>Club Meet-up</td>
+          <td>Lecture Hall 2</td>
+          <td>6:30 PM – 8:00 PM</td>
+          <td>Discussion on upcoming shoots, gear tips, and creative ideas.</td>
+        </tr>
+        <tr>
+          <td>Guest Speaker</td>
+          <td>Lecture Hall 2</td>
+          <td>8:00 PM – 9:00 PM</td>
+          <td>Special talks by photographers and industry professionals.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>📆 Upcoming Workshops</h2>
+    <table class="workshop-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Workshop Title</th>
+          <th>Trainer</th>
+          <th>Location</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>August 15, 2025</td>
+          <td>Portrait Lighting Techniques</td>
+          <td>Alex Tan</td>
+          <td>Studio Room A</td>
+          <td>2:00 PM – 5:00 PM</td>
+        </tr>
+        <tr>
+          <td>August 29, 2025</td>
+          <td>Street Photography Masterclass</td>
+          <td>Samantha Lee</td>
+          <td>Outdoor (Meet at Lobby)</td>
+          <td>4:00 PM – 7:00 PM</td>
+        </tr>
+        <tr>
+          <td>September 12, 2025</td>
+          <td>Color Grading & Mood</td>
+          <td>David Lim</td>
+          <td>Lab 6</td>
+          <td>3:00 PM – 6:00 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Highlights from Our Last Event -->
+  <div class="container mt-5">
+    <h2 class="section-title reveal">Highlights from Our Last Event : The CosCapture</h2>
+
+    <!-- Our Moments with Fade Carousel -->
+    <div class="row align-items-center mb-5 reveal">
+      <div class="col-md-6">
+        <div id="highlightCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+          <div class="carousel-inner rounded shadow-sm">
+            <div class="carousel-item active">
+              <img src="images/1.jpg.jpg" class="d-block" alt="Highlight 1" />
+            </div>
+            <div class="carousel-item">
+              <img src="images/2.jpg.jpg" class="d-block" alt="Highlight 2" />
+            </div>
+            <div class="carousel-item">
+              <img src="images/3.jpg.jpg" class="d-block" alt="Highlight 3" />
+            </div>
+            <div class="carousel-item">
+              <img src="images/4.jpg.jpg" class="d-block" alt="Highlight 4" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#highlightCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#highlightCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h4 class="fw-bold">Captured Moments from The CosCapture </h4>
+        <p>Take a look through on the pictures taken during the event. <br>Pictures taken from a variety of angles and lightings</p>
+      </div>
+    </div>
+
+    <!-- Behind the Scenes with Video -->
+    <div class="container mt-5">
+      <div class="row align-items-center justify-content-center reveal" style="max-width: 900px; margin: 0 auto;">
+        <div class="col-md-6 order-md-2 d-flex justify-content-center">
+          <video class="rounded shadow-sm" autoplay muted loop controls>
+            <source src="videos/BTS1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <h4 class="fw-bold">Behind the Scenes</h4>
+          <p>Take a look behind the scenes while taking pictures. <br>Testing different angles and lightings while taking the picture.</p>
+          <p class="text-muted">🎬 Video by: Alex Tan</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Upcoming Event -->
+  <div class="container mt-5 mb-5 reveal">
+    <h2 class="section-title">Upcoming Event</h2>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">📅 Through the Lens: Ocean Wonders</h5>
+        <p class="card-text">Join us on <strong>Saturday, 23 August 2025</strong> at <strong>12:00 PM</strong> at Singapore Oceanarium.<br> Capture the enchanting beauty of the Singapore Oceanarium through long exposure shots, light trails, and creative underwater-themed photography.</p>
+        <p><strong>No sign-up required. Just bring your camera!</strong></p>
+      </div>
+    </div>
+  </div>
+<!-- Mini Map with Red Pin -->
+<div class="container mb-5 reveal" style="max-width: 600px; margin: 0 auto;">
+  <h6 class="fw-bold mb-2 text-center">📍 Location: Singapore Oceanarium</h6>
+  <div class="ratio ratio-4x3 rounded shadow-sm">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.404716447329!2d103.82131191603923!3d1.256043432923678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1bfdabc2ed8f%3A0xf4b09544068cfd26!2sSingapore%20Oceanarium!5e0!3m2!1sen!2ssg!4v1691401234567!5m2!1sen!2ssg" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- IntersectionObserver for Reveal -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => observer.observe(reveal));
+  </script>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Photography Club. All rights reserved.</p>
+      <small>Follow us on 
+        <a href="https://www.instagram.com/nyp_photography/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="bi bi-instagram mx-1"></i>
+        </a>
+        <a href="https://www.facebook.com/TheNypPhotographyClub/" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="bi bi-facebook mx-1"></i>
+        </a>
+        <a href="https://www.youtube.com/@OfficialNYPTV" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="bi bi-youtube mx-1"></i>
+        </a>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>

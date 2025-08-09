@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photography Club - Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    /* Gallery Images */
+    .gallery-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.03);
+    }
+
+    .img-caption {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+      .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('images/background3.jpeg') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeInHero 1s ease-out both;
+    color: white; /* ensure text is white */
+    }
+
+    @keyframes fadeInHero {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional container styling for hero content */
+    .hero-content {
+      max-width: 700px;
+      padding: 0 15px;
+    }
+    /* Footer icons and accessibility */
+    footer small i {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      font-size: 1.3rem;
+      color: #ffffff;
+    }
+
+    footer small a {
+      text-decoration: none;
+      outline: none;
+      border: none;
+    }
+
+    footer small a:focus,
+    footer small a:active {
+      outline: none;
+      box-shadow: none;
+    }
+
+    footer small a i {
+      vertical-align: middle;
+    }
+
+    footer small i:hover {
+      transform: scale(1.2);
+    color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="bi bi-camera-fill me-2"></i>Photography Club
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="join.html">Join Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+<header class="hero text-white text-center reveal">
+  <div class="container hero-content">
+    <h1 class="display-3 fw-bold">Our Gallery</h1>
+  </div>
+</header>
+
+  <!-- Gallery -->
+  <div class="container mt-5 mb-5">
+    <h2 class="section-title">Captured Moments</h2>
+    <div class="row g-4">
+      <!-- Each gallery item has the reveal class -->
+      <div class="col-md-4 reveal">
+        <a href="images/Nature.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Nature.jpeg" alt="Nature" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌸 Delicate blooms in morning mist - By Ethan</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Park.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Park.jpeg" alt="Park" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌅 Lotus reflections under sunset skies - By Sophia</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Sunset.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Sunset.jpeg" alt="Sunset" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌇 Sunset captured after the rain - By Liam</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Cat.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Cat.jpeg" alt="Cat" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🐾 A curled-up cat, peace in textures - By Olivia</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/7.jpg.jpg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/7.jpg.jpg" alt="Cosplay" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">✨ Night glow in cosplay vibes - By Noah</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Chinatown.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Chinatown.jpeg" alt="Chinatown" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🏮 Architecture meets neon brilliance - By Ava</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Skies.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Skies.jpeg" alt="Cloud" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">☁️ Above the Clouds - By Kahlen</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Waterfall.jpg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Waterfall.jpg" alt="Waterfall" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌿 Whispering Falls among Emerald Slopes - By Bell</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Up.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Up.jpeg" alt="Up" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌴 Whispers of Trees Against the Sky - By Benjamin</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Rose.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Rose.jpeg" alt="Rose" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌹 Blossom Aglow in Golden Hues - By Justin</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/SingaporeFlyer.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/SingaporeFlyer.jpeg" alt="SingaporeFlyer" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🎡 Wheels of Light Over the Bay - By Amelia</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Merlion.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Merlion.jpeg" alt="Merlion" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌊 Where the Lion Meets the Sea - By Daniel</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Jewel.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Jewel.jpeg" alt="Jewel" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">💎 Cascade Within a Glass Garden - By Isabella</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/CloudForest.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/CloudForest.jpeg" alt="CloudForest" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌿 Hanging Gardens in the Mist - By James</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Cloud.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Cloud.jpeg" alt="Cloud" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">☁️ Sunrays Piercing Through the Sky - By Yuri</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Mountain.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Mountain.jpeg" alt="Mountain" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🏔 Peaks Wrapped in Silent Shadows - By Adam</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/FortCanning.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/FortCanning.jpeg" alt="FortCanning" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌳 Roots of Time Beneath the Canopy - By Katherine</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Mirror.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Mirror.jpeg" alt="Mirror" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🔲 Reflections That Invert Reality - By Edris</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Airplane.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Airplane.jpeg" alt="Airplane" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">✈️ Flight in Perfect Formation - By Jerald</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/CrystalBall.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/CrystalBall.jpeg" alt="CrystalBall" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🔮 A World Inside Glass - By Vivian</p>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <a href="images/Moon.jpeg" class="glightbox" data-gallery="club-gallery">
+          <img src="images/Moon.jpeg" alt="Moon" class="gallery-img" loading="lazy">
+        </a>
+        <p class="img-caption">🌕 Luminous Guardian of the Night - By Shawn</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    const lightbox = GLightbox({ selector: '.glightbox' });
+
+    // IntersectionObserver for reveal effect
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => observer.observe(reveal));
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4" role="contentinfo">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Photography Club. All rights reserved.</p>
+      <small>Follow us on 
+        <a href="https://www.instagram.com/nyp_photography/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="bi bi-instagram mx-1"></i>
+        </a>
+        <a href="https://www.facebook.com/TheNypPhotographyClub/" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="bi bi-facebook mx-1"></i>
+        </a>
+        <a href="https://www.youtube.com/@OfficialNYPTV" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="bi bi-youtube mx-1"></i>
+        </a>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>
