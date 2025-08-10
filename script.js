@@ -17,7 +17,7 @@ reveals.forEach(reveal => observer.observe(reveal));
   const form = document.querySelector('#joinForm');  
   const reasonField = form.querySelector('#reason');
   const thankYou = document.getElementById('submittedData');
-  const submittedList = document.querySelector('#submittedData ul');
+  const submittedList = document.querySelector('#submittedData ul'); // Get the list directly
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -74,9 +74,9 @@ reveals.forEach(reveal => observer.observe(reveal));
       submittedList.appendChild(li);
     }
 
-    form.classList.remove('was-validated');
-    form.reset();
+    // Reset and hide the form
     form.classList.add('d-none');
     thankYou.classList.remove('d-none');
   });
 })();
+
