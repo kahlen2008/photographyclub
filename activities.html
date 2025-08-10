@@ -139,60 +139,60 @@
       color: #0d6efd;
     }
     table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 40px;
-}
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 12px 15px;
-  text-align: left;
-  vertical-align: top;
-}
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+      vertical-align: top;
+    }
 
-th {
-  background-color: #333;
-  color: #fff;
-  font-weight: bold;
-}
+    th {
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+    }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
 
-tr:hover {
-  background-color: #f1f1f1;
-}
+    tr:hover {
+      background-color: #f1f1f1;
+    }
 
-.schedule-table td:nth-child(1),
-.schedule-table td:nth-child(2) {
-  font-weight: 500;
-}
+    .schedule-table td:nth-child(1),
+    .schedule-table td:nth-child(2) {
+      font-weight: 500;
+      }
 
-@media (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+    th {
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+    }
+
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+    }
   }
-
-  th {
-    position: sticky;
-    top: 0;
-  }
-
-  td {
-    border: none;
-    position: relative;
-    padding-left: 50%;
-  }
-
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    font-weight: bold;
-  }
-}
   </style>
 </head>
 <body>
@@ -222,11 +222,12 @@ tr:hover {
     </div>
   </header>
 
-<div class="container">
-    <h1>📸 Photography CCA Club — Weekly Schedule</h1>
+<div class="container schedule-container mt-5 ">
+    <h1 class="reveal" style="text-align: center;">📸 Photography CCA Club — Weekly Schedule</h1>
+
     <table class="schedule-table">
       <thead>
-        <tr>
+        <tr class="reveal">
           <th>Day</th>
           <th>Activity</th>
           <th>Location</th>
@@ -235,27 +236,27 @@ tr:hover {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="reveal">
           <td rowspan="2">Tuesday</td>
           <td>Editing Workshop</td>
           <td>Lab 5</td>
           <td>6:30 PM – 8:00 PM</td>
           <td>Post-processing tutorials using Lightroom & Photoshop.</td>
         </tr>
-        <tr>
+        <tr class="reveal">
           <td>Photo Review</td>
           <td>Lab 5</td>
           <td>8:00 PM – 8:30 PM</td>
           <td>Peer feedback and group critique on recent shoots.</td>
         </tr>
-        <tr>
+        <tr class="reveal">
           <td rowspan="2">Thursday</td>
           <td>Club Meet-up</td>
           <td>Lecture Hall 2</td>
           <td>6:30 PM – 8:00 PM</td>
           <td>Discussion on upcoming shoots, gear tips, and creative ideas.</td>
         </tr>
-        <tr>
+        <tr class="reveal">
           <td>Guest Speaker</td>
           <td>Lecture Hall 2</td>
           <td>8:00 PM – 9:00 PM</td>
@@ -264,10 +265,10 @@ tr:hover {
       </tbody>
     </table>
 
-    <h2>📆 Upcoming Workshops</h2>
+    <h1 class="reveal" style="text-align: center;">📆 Upcoming Workshops</h1>
     <table class="workshop-table">
       <thead>
-        <tr>
+        <tr class="reveal">
           <th>Date</th>
           <th>Workshop Title</th>
           <th>Trainer</th>
@@ -276,21 +277,21 @@ tr:hover {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="reveal">
           <td>August 15, 2025</td>
           <td>Portrait Lighting Techniques</td>
           <td>Alex Tan</td>
           <td>Studio Room A</td>
           <td>2:00 PM – 5:00 PM</td>
         </tr>
-        <tr>
+        <tr class="reveal">
           <td>August 29, 2025</td>
           <td>Street Photography Masterclass</td>
           <td>Samantha Lee</td>
           <td>Outdoor (Meet at Lobby)</td>
           <td>4:00 PM – 7:00 PM</td>
         </tr>
-        <tr>
+        <tr class="reveal">
           <td>September 12, 2025</td>
           <td>Color Grading & Mood</td>
           <td>David Lim</td>
@@ -304,7 +305,7 @@ tr:hover {
   <!-- Highlights from Our Last Event -->
   <div class="container mt-5">
     <h2 class="section-title reveal">Highlights from Our Last Event : The CosCapture</h2>
-
+      <p style="text-align: center;">CosCapture is an exclusive photography event hosted by the Photography Club, where skilled photographers capture stunning portraits of cosplayers in meticulously styled settings. The event brings together passionate photographers and talented cosplayers, providing an opportunity for artistic collaboration.<p>
     <!-- Our Moments with Fade Carousel -->
     <div class="row align-items-center mb-5 reveal">
       <div class="col-md-6">
@@ -334,8 +335,8 @@ tr:hover {
         </div>
       </div>
       <div class="col-md-6">
-        <h4 class="fw-bold">Captured Moments from The CosCapture </h4>
-        <p>Take a look through on the pictures taken during the event. <br>Pictures taken from a variety of angles and lightings</p>
+        <h4 class="fw-bold">Captured Moments from The CosCapture</h4>
+        <p>Take a moment to explore the collection of photos captured during the event, each one highlighting a diverse range of angles and creative lighting techniques that truly bring the moments to life.</p>
       </div>
     </div>
 
@@ -350,7 +351,7 @@ tr:hover {
         </div>
         <div class="col-md-6 order-md-1">
           <h4 class="fw-bold">Behind the Scenes</h4>
-          <p>Take a look behind the scenes while taking pictures. <br>Testing different angles and lightings while taking the picture.</p>
+          <p>Step behind the scenes and experience the process of capturing stunning photographs, where various angles and lighting techniques are carefully tested and refined to create the perfect shot.</p>
           <p class="text-muted">🎬 Video by: Alex Tan</p>
         </div>
       </div>
