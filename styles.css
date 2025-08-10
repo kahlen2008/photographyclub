@@ -105,7 +105,7 @@ footer small i:hover {
 .join-header {
   position: relative;
   background: url('images/join-header.jpg') center/cover no-repeat;
-  min-height: 100vh; /* Full screen height */
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,22 +214,5 @@ input:focus {
 
 #submittedData {
   margin-top: 0 !important;
-  padding-top: 1rem;
-  text-align: center;
-  padding-bottom: 1rem;
-}
-
-#submittedData h4 {
-  margin-bottom: 20px;
-}
-
-#submittedData ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-#submittedData li {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  margin-bottom: 10px;
+  padding-top: 1rem; /* slight breathing room */
 }
