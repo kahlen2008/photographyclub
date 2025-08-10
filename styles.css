@@ -31,14 +31,15 @@ body {
   z-index: 1;
 }
 
+/* Updated keyframes for a downward reveal */
 @keyframes fadeInHero {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(-40px); /* Starts from above the final position */
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* Ends at its final, normal position */
   }
 }
 
