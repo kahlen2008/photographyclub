@@ -129,7 +129,7 @@ footer small i:hover {
   background-color: #000;
   color: #fff;
   border: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-black:hover,
@@ -138,6 +138,11 @@ footer small i:hover {
   color: #fff;
   outline: none;
   box-shadow: none;
+  transform: scale(1.05); /* Slight scale-up effect on hover */
+}
+
+.btn-black:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.15);
 }
 
 /* ========== Form Styling ========== */
@@ -209,6 +214,5 @@ input:focus {
 
 #submittedData {
   margin-top: 0 !important;
-  padding-top: 1rem; /* optional: slight breathing room */
+  padding-top: 1rem; /* slight breathing room */
 }
-
