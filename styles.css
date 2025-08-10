@@ -8,36 +8,18 @@ body {
 }
 
 /* ========== Hero Section ========== */
-.join-header {
-  position: relative;
+.hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url('images/join-header.jpg') center/cover no-repeat;
-  min-height: 100vh; /* Full-screen height */
+              url('images/hero-bg.jpg') center/cover no-repeat;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  animation: fadeInHero 1s ease-out both;
 }
 
-.join-header .overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
-  z-index: 0;
-}
-
-.join-header .container {
-  position: relative;
-  z-index: 1;
-}
-
-.join-header h1,
-.join-header p {
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-@keyframes fadeInUp {
+@keyframes fadeInHero {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -48,54 +30,29 @@ body {
   }
 }
 
-/* Down Arrow Styling */
-.down-arrow {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 1.5s infinite;
+/* ========== Instructor & Uniform Images ========== */
+.instructor-img,
+.uniform-img {
+  width: 100%;
+  max-width: 280px;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
-.down-arrow i {
-  font-size: 3rem;
-  color: white;
+/* Melanie image crop adjustment */
+.instructor-img.melanie {
+  object-position: center 5%;
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
+/* ========== Layout Spacing Fixes ========== */
+.row.align-items-center > .col-md-5 {
+  margin-bottom: 0 !important;
 }
 
-/* ========== Form Section ========== */
-#join-form {
-  background-color: #f8f9fa;
-  padding-top: 2rem;
-}
-
-/* ========== Buttons ========== */
-.btn-black {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-black:hover,
-.btn-black:focus {
-  background-color: #222;
-  color: #fff;
-  outline: none;
-  box-shadow: none;
-  transform: scale(1.05); /* Slight scale-up effect on hover */
-}
-
-.btn-black:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.15);
+.row.gx-4 > [class^='col-'] {
+  margin-bottom: 1rem;
 }
 
 /* ========== Scroll Reveal Animation ========== */
@@ -142,4 +99,120 @@ footer small a i {
 footer small i:hover {
   transform: scale(1.2);
   color: #0d6efd;
+}
+
+/* ========== Join Page Header ========== */
+.join-header {
+  position: relative;
+  background: url('images/join-header.jpg') center/cover no-repeat;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center 60%;
+}
+
+.join-header .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
+  z-index: 0;
+}
+
+.join-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== Buttons ========== */
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-black:hover,
+.btn-black:focus {
+  background-color: #222;
+  color: #fff;
+  outline: none;
+  box-shadow: none;
+  transform: scale(1.05); /* Slight scale-up effect on hover */
+}
+
+.btn-black:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Form Styling ========== */
+
+/* Date Picker (DOB) */
+#dob {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Gender Radio Buttons */
+.form-check {
+  background-color: #fff;
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Remove default inline grouping */
+.form-check-inline {
+  display: block;
+  margin-right: 0;
+}
+
+/* Radio Buttons Appearance */
+.form-check-input[type="radio"] {
+  background-color: transparent;
+  border: 2px solid #666;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.form-check-input[type="radio"]:checked {
+  background-color: #000;
+  border-color: #000;
+}
+
+/* Textareas, Selects, Inputs */
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+  border-radius: 0.375rem;
+  box-shadow: none;
+}
+
+textarea:focus,
+select:focus,
+input:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.05);
+}
+
+/* Validation message spacing */
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid,
+.was-validated .form-check-input:invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: #dc3545;
+}
+
+#submittedData {
+  margin-top: 0 !important;
+  padding-top: 1rem; /* slight breathing room */
 }
