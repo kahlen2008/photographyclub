@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
@@ -30,17 +29,14 @@
     </div>
   </nav>
 
-  <!-- Join Us Header -->
-  <header class="join-header text-center text-white py-5 bg-black">
-    <div class="overlay"></div>
-    <div class="container position-relative">
-      <h1 class="display-4 fw-bold">Join the Photography Club</h1>
-      <p class="lead mb-0">Fill out the form below to become a member!</p>
+  <header class="hero text-white text-center join-hero">
+    <div class="container hero-content">
+      <h1 class="display-3 fw-bold">Join the Photography Club</h1>
+      <p class="lead mb-4">Fill out the form below to become a member!</p>
     </div>
   </header>
 
-  <!-- Join Form Section -->
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light reveal" id="joinFormSection">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -52,35 +48,30 @@
             <div class="card-body p-4 p-md-5">
               <form id="joinForm" novalidate class="needs-validation">
 
-                <!-- Name -->
                 <div class="mb-4">
                   <label for="name" class="form-label">Full Name:</label>
                   <input type="text" class="form-control rounded-3" id="name" required>
                   <div class="invalid-feedback">Please enter your full name.</div>
                 </div>
 
-                <!-- Email -->
                 <div class="mb-4">
                   <label for="email" class="form-label">Email Address:</label>
                   <input type="email" class="form-control rounded-3" id="email" required>
                   <div class="invalid-feedback">Enter a valid school email address.</div>
                 </div>
 
-                <!-- Phone -->
                 <div class="mb-4">
                   <label for="phone" class="form-label">Phone Number:</label>
                   <input type="tel" class="form-control rounded-3" id="phone" pattern="^[89]\d{7}$" required>
                   <div class="invalid-feedback">Must be 8 digits and start with 8 or 9.</div>
                 </div>
 
-                <!-- DOB -->
                 <div class="mb-4">
                   <label for="dob" class="form-label">Date of Birth:</label>
                   <input type="date" class="form-control rounded-3" id="dob" required>
                   <div class="invalid-feedback">You must be born in 2008 or earlier.</div>
                 </div>
 
-                <!-- Gender -->
                 <div class="mb-4">
                   <label class="form-label">Gender:</label>
                   <div>
@@ -100,7 +91,6 @@
                   <div class="invalid-feedback d-block">Please select your gender.</div>
                 </div>
 
-                <!-- Experience -->
                 <div class="mb-4">
                   <label for="experience" class="form-label">Experience Level:</label>
                   <select class="form-select" id="experience" required>
@@ -112,7 +102,6 @@
                   <div class="invalid-feedback">Please select your level.</div>
                 </div>
 
-                <!-- Reason -->
                 <div class="mb-4">
                   <label for="reason" class="form-label">Why do you want to join?</label>
                   <textarea class="form-control rounded-3" id="reason" rows="4" required data-word-min="10"></textarea>
@@ -125,7 +114,6 @@
 
               </form>
 
-              <!-- Display submitted info -->
               <div id="submittedData" class="mt-5 d-none">
                 <h4 class="mb-3">🎉 Thank you for joining!</h4>
                 <ul class="list-group" id="submittedList"></ul>
@@ -140,7 +128,7 @@
 
   <footer class="bg-dark text-white text-center py-4">
     <div class="container">
-      <p class="mb-1">&copy; 2025 Photography Club. All rights reserved.</p>
+      <p class="mb-1">© 2025 Photography Club. All rights reserved.</p>
       <small>
         Follow us:
         <a href="https://www.instagram.com/nyp_photography/" target="_blank"><i class="bi bi-instagram mx-1"></i></a>

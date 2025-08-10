@@ -32,7 +32,7 @@ reveals.forEach(reveal => observer.observe(reveal));
     const isOldEnough = (age > ageLimit) || (age === ageLimit && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)));
 
     if (!isOldEnough) {
-      document.getElementById('dob').setCustomValidity("You must be at least 16 years old.");
+      document.getElementById('dob').setCustomValidity(`You must be at least ${ageLimit} years old.`);
     } else {
       document.getElementById('dob').setCustomValidity("");
     }
@@ -78,5 +78,21 @@ reveals.forEach(reveal => observer.observe(reveal));
     form.classList.add('d-none');
     thankYou.classList.remove('d-none');
   });
-})();
 
+  // Smooth scroll for hero section
+  const scrollDownButton = document.querySelector('.scroll-down-btn');
+  if (scrollDownButton) {
+    scrollDownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+})();

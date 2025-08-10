@@ -17,6 +17,18 @@ body {
   justify-content: center;
   text-align: center;
   animation: fadeInHero 1s ease-out both;
+  position: relative;
+}
+
+/* Specific background for Join page */
+.join-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('images/join-header.jpg') center 60% / cover no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadeInHero {
@@ -99,29 +111,6 @@ footer small a i {
 footer small i:hover {
   transform: scale(1.2);
   color: #0d6efd;
-}
-
-/* ========== Join Page Header ========== */
-.join-header {
-  position: relative;
-  background: url('images/join-header.jpg') center/cover no-repeat;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-position: center 60%;
-}
-
-.join-header .overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
-  z-index: 0;
-}
-
-.join-header .container {
-  position: relative;
-  z-index: 1;
 }
 
 /* ========== Buttons ========== */
