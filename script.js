@@ -102,8 +102,16 @@ if (document.getElementById('joinForm')) {
             document.getElementById('submittedList').innerHTML = `
                 <li class="list-group-item"><strong>Name:</strong> ${document.getElementById('name').value}</li>
                 <li class="list-group-item"><strong>Email:</strong> ${document.getElementById('email').value}</li>
+                <li class="list-group-item"><strong>Phone:</strong> ${document.getElementById('phone').value}</li>
+                <li class="list-group-item"><strong>Date of Birth:</strong> ${document.getElementById('dob').value}</li>
+                <li class="list-group-item"><strong>Gender:</strong> ${form.querySelector('input[name="gender"]:checked').value}</li>
+                <li class="list-group-item"><strong>Experience:</strong> ${document.getElementById('experience').value}</li>
+                <li class="list-group-item"><strong>Reason:</strong> ${reasonField.value.trim()}</li>
                 <li class="list-group-item">Your application has been received!</li>
             `;
+
+            console.log("Document successfully written!");
+            // Re-enable the button and reset text
 
         } catch (error) {
             console.error("Error adding document: ", error);
