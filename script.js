@@ -62,6 +62,9 @@ reveals.forEach(reveal => observer.observe(reveal));
       Reason: reasonField.value.trim()
     };
 
+    // Store data in localStorage
+    localStorage.setItem('formData', JSON.stringify(data));
+
     // Clear and populate summary list
     submittedList.innerHTML = '';
     for (let key in data) {
@@ -77,4 +80,3 @@ reveals.forEach(reveal => observer.observe(reveal));
     thankYou.classList.remove('d-none');
   });
 })();
-
