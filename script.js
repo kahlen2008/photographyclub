@@ -46,6 +46,20 @@ if (document.getElementById('joinForm')) {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // --- START: MODIFIED CODE FOR GENDER VALIDATION ---
+        // Manually check if a gender is selected to display feedback correctly
+        const isGenderSelected = form.querySelector('input[name="gender"]:checked');
+        const genderFeedback = document.getElementById('gender-feedback');
+
+        if (!isGenderSelected) {
+            // If no gender is selected, make the feedback message visible
+            genderFeedback.style.display = 'block';
+        } else {
+            // If a gender is selected, hide the feedback message
+            genderFeedback.style.display = 'none';
+        }
+        // --- END: MODIFIED CODE FOR GENDER VALIDATION ---
+
         // Custom validation for age
         const dobInput = document.getElementById('dob');
         const dob = new Date(dobInput.value);
@@ -71,7 +85,8 @@ if (document.getElementById('joinForm')) {
         } else {
             reasonField.setCustomValidity("");
         }
-
+        
+        // This check will now work alongside the manual gender feedback
         if (!form.checkValidity()) {
             form.classList.add('was-validated');
             return;
@@ -109,9 +124,6 @@ if (document.getElementById('joinForm')) {
                 <li class="list-group-item"><strong>Reason:</strong> ${reasonField.value.trim()}</li>
                 <li class="list-group-item">Your application has been received!</li>
             `;
-
-            console.log("Document successfully written!");
-            // Re-enable the button and reset text
 
         } catch (error) {
             console.error("Error adding document: ", error);
