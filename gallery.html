@@ -2,343 +2,378 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Photography Club - Gallery</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYP Photography Club | Gallery</title>
+  <meta name="description" content="Gallery — Moments from our members, events and adventures around the world.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #1a1a1a;
-      background-color: #f9f9f9;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 50px;
-      margin-bottom: 30px;
-    }
-
-    /* Gallery Images */
-    .gallery-img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-img:hover {
-      transform: scale(1.03);
-    }
-
-    .img-caption {
-      text-align: center;
-      margin-top: 8px;
-      font-size: 0.95rem;
-      color: #6c757d;
-    }
-
-    /* Reveal Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-      .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('images/background3.jpeg') center/cover no-repeat;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    animation: fadeInHero 1s ease-out both;
-    color: white; /* ensure text is white */
-    }
-
-    @keyframes fadeInHero {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Optional container styling for hero content */
-    .hero-content {
-      max-width: 700px;
-      padding: 0 15px;
-    }
-    /* Footer icons and accessibility */
-    footer small i {
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      font-size: 1.3rem;
-      color: #ffffff;
-    }
-
-    footer small a {
-      text-decoration: none;
-      outline: none;
-      border: none;
-    }
-
-    footer small a:focus,
-    footer small a:active {
-      outline: none;
-      box-shadow: none;
-    }
-
-    footer small a i {
-      vertical-align: middle;
-    }
-
-    footer small i:hover {
-      transform: scale(1.2);
-    color: #0d6efd;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css"/>
+  <script>
+    if(localStorage.getItem('isLoggedIn') === 'true') document.documentElement.classList.add('logged-in');
+    if(localStorage.getItem('isAdmin') === 'true') document.documentElement.classList.add('is-admin');
+  </script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">
-        <i class="bi bi-camera-fill me-2"></i>Photography Club
+  <div class="site-layout">
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="hamburger" id="menuToggle" aria-label="Open menu"><i class="bi bi-list"></i></button>
+      <span class="mobile-logo">NYP Photography Club</span>
+      <span></span>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="sidebar-logo">
+        <div class="logo-icon"><i class="bi bi-camera"></i></div>
+        <div class="logo-text">NYP<br>Photography<br>Club</div>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="activities.html">Activities</a></li>
-          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="join.html">Join Us</a></li>
-        </ul>
+
+      <nav class="sidebar-nav">
+        <a href="index.html"><i class="bi bi-house-door"></i> Home</a>
+        <a href="index.html#about"><i class="bi bi-info-circle"></i> About</a>
+        <a href="gallery.html" class="active"><i class="bi bi-grid-3x3-gap"></i> Gallery</a>
+        <a href="activities.html"><i class="bi bi-calendar-event"></i> Events</a>
+        <a href="join.html"><i class="bi bi-person-plus"></i> Join Us</a>
+        <a href="admin.html" class="admin-link" id="adminNavLink" style="display:none;"><i class="bi bi-shield-lock"></i> Admin Panel</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="login.html" class="sidebar-login-btn auth-logged-out-only" id="sidebarLoginBtn">Log In</a>
+        <a href="#" class="sidebar-login-btn auth-logged-in-only" id="navLogoutBtn">Log Out</a>
       </div>
+
+      <div class="sidebar-quote">
+        "Different perspectives.<br>A brighter world."
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Gallery</h1>
+        <p>Moments from our members, events and adventures around the world.</p>
+      </div>
+
+      <!-- Content -->
+      <div class="content-area">
+
+        <!-- Filter Bar -->
+        <div class="gallery-filters" id="galleryFilters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="people">People</button>
+          <button class="filter-btn" data-filter="nature">Nature</button>
+          <button class="filter-btn" data-filter="cityscape">Cityscape</button>
+          <button class="filter-btn" data-filter="film">Film</button>
+          <button class="filter-btn" data-filter="events">Events</button>
+          <div class="gallery-search">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Search photos, tags..." id="gallerySearch">
+          </div>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+
+          <div class="gallery-card" data-category="cityscape" data-title="Local Streets" data-author="Janice Tan">
+            <a href="images/Chinatown.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Chinatown.jpeg" alt="Local Streets" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Local Streets</div>
+              <div class="card-author">by Janice Tan</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Morning Light" data-author="Sarah Lim">
+            <a href="images/Nature.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Nature.jpeg" alt="Morning Light" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Morning Light</div>
+              <div class="card-author">by Sarah Lim</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="cityscape" data-title="Into the Blue" data-author="Daniel Koh">
+            <a href="images/Merlion.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Merlion.jpeg" alt="Into the Blue" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Into the Blue</div>
+              <div class="card-author">by Daniel Koh</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Curios" data-author="Megan Lee">
+            <a href="images/Cat.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Cat.jpeg" alt="Curios" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Curios</div>
+              <div class="card-author">by Megan Lee</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="cityscape" data-title="City Nights" data-author="Ryan Ng">
+            <a href="images/SingaporeFlyer.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/SingaporeFlyer.jpeg" alt="City Nights" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">City Nights</div>
+              <div class="card-author">by Ryan Ng</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="In Bloom" data-author="Cheryl Wong">
+            <a href="images/Rose.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Rose.jpeg" alt="In Bloom" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">In Bloom</div>
+              <div class="card-author">by Cheryl Wong</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Above the Clouds" data-author="Kahlen">
+            <a href="images/Skies.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Skies.jpeg" alt="Above the Clouds" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Above the Clouds</div>
+              <div class="card-author">by Kahlen</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Whispering Falls" data-author="Bell">
+            <a href="images/Waterfall.jpg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Waterfall.jpg" alt="Whispering Falls" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Whispering Falls</div>
+              <div class="card-author">by Bell</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Treetops" data-author="Benjamin">
+            <a href="images/Up.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Up.jpeg" alt="Treetops" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Treetops</div>
+              <div class="card-author">by Benjamin</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="cityscape" data-title="Sunset Bay" data-author="Liam">
+            <a href="images/Sunset.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Sunset.jpeg" alt="Sunset Bay" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Sunset Bay</div>
+              <div class="card-author">by Liam</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Lotus Reflections" data-author="Sophia">
+            <a href="images/Park.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Park.jpeg" alt="Lotus Reflections" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Lotus Reflections</div>
+              <div class="card-author">by Sophia</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="events" data-title="Night Glow" data-author="Noah">
+            <a href="images/7.jpg.jpg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/7.jpg.jpg" alt="Night Glow" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Night Glow</div>
+              <div class="card-author">by Noah</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="cityscape" data-title="Glass Gardens" data-author="Isabella">
+            <a href="images/Jewel.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Jewel.jpeg" alt="Glass Gardens" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Glass Gardens</div>
+              <div class="card-author">by Isabella</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Hanging Gardens" data-author="James">
+            <a href="images/CloudForest.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/CloudForest.jpeg" alt="Hanging Gardens" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Hanging Gardens</div>
+              <div class="card-author">by James</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Sunrays" data-author="Yuri">
+            <a href="images/Cloud.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Cloud.jpeg" alt="Sunrays" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Sunrays</div>
+              <div class="card-author">by Yuri</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Silent Peaks" data-author="Adam">
+            <a href="images/Mountain.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Mountain.jpeg" alt="Silent Peaks" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Silent Peaks</div>
+              <div class="card-author">by Adam</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Ancient Canopy" data-author="Katherine">
+            <a href="images/FortCanning.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/FortCanning.jpeg" alt="Ancient Canopy" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Ancient Canopy</div>
+              <div class="card-author">by Katherine</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="film" data-title="Inverted Reality" data-author="Edris">
+            <a href="images/Mirror.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Mirror.jpeg" alt="Inverted Reality" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Inverted Reality</div>
+              <div class="card-author">by Edris</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="cityscape" data-title="Flight Formation" data-author="Jerald">
+            <a href="images/Airplane.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Airplane.jpeg" alt="Flight Formation" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Flight Formation</div>
+              <div class="card-author">by Jerald</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="film" data-title="World in Glass" data-author="Vivian">
+            <a href="images/CrystalBall.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/CrystalBall.jpeg" alt="World in Glass" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">World in Glass</div>
+              <div class="card-author">by Vivian</div>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="nature" data-title="Luminous Night" data-author="Shawn">
+            <a href="images/Moon.jpeg" class="glightbox" data-gallery="club-gallery">
+              <div class="card-image">
+                <img src="images/Moon.jpeg" alt="Luminous Night" loading="lazy">
+                <button class="card-favorite" aria-label="Favorite"><i class="bi bi-heart"></i></button>
+              </div>
+            </a>
+            <div class="card-info">
+              <div class="card-title">Luminous Night</div>
+              <div class="card-author">by Shawn</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <p>© 2025 NYP Photography Club. All rights reserved.</p>
+        <p>For enquiries, email <a href="mailto:kahlenongzhiqi@gmail.com">kahlenongzhiqi@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/nyp_photography/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.facebook.com/TheNypPhotographyClub/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.youtube.com/@OfficialNYPTV" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </footer>
+
     </div>
-  </nav>
-
-  <!-- Header -->
-<header class="hero text-white text-center reveal">
-  <div class="container hero-content">
-    <h1 class="display-3 fw-bold">Our Gallery</h1>
-      <p class="lead">See the world through our lens.</p>
-  </div>
-</header>
-
-  <!-- Gallery -->
-  <div class="container mt-5 mb-5">
-    <h2 class="section-title">Captured Moments</h2>
-    <div class="row g-4">
-      <!-- Each gallery item has the reveal class -->
-      <div class="col-md-4 reveal">
-        <a href="images/Nature.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Nature.jpeg" alt="Nature" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌸 Delicate blooms in morning mist - By Ethan</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Park.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Park.jpeg" alt="Park" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌅 Lotus reflections under sunset skies - By Sophia</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Sunset.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Sunset.jpeg" alt="Sunset" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌇 Sunset captured after the rain - By Liam</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Cat.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Cat.jpeg" alt="Cat" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🐾 A curled-up cat, peace in textures - By Olivia</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/7.jpg.jpg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/7.jpg.jpg" alt="Cosplay" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">✨ Night glow in cosplay vibes - By Noah</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Chinatown.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Chinatown.jpeg" alt="Chinatown" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🏮 Architecture meets neon brilliance - By Ava</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Skies.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Skies.jpeg" alt="Cloud" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">☁️ Above the Clouds - By Kahlen</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Waterfall.jpg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Waterfall.jpg" alt="Waterfall" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌿 Whispering Falls among Emerald Slopes - By Bell</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Up.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Up.jpeg" alt="Up" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌴 Whispers of Trees Against the Sky - By Benjamin</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Rose.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Rose.jpeg" alt="Rose" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌹 Blossom Aglow in Golden Hues - By Justin</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/SingaporeFlyer.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/SingaporeFlyer.jpeg" alt="SingaporeFlyer" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🎡 Wheels of Light Over the Bay - By Amelia</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Merlion.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Merlion.jpeg" alt="Merlion" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌊 Where the Lion Meets the Sea - By Daniel</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Jewel.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Jewel.jpeg" alt="Jewel" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">💎 Cascade Within a Glass Garden - By Isabella</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/CloudForest.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/CloudForest.jpeg" alt="CloudForest" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌿 Hanging Gardens in the Mist - By James</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Cloud.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Cloud.jpeg" alt="Cloud" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">☁️ Sunrays Piercing Through the Sky - By Yuri</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Mountain.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Mountain.jpeg" alt="Mountain" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🏔 Peaks Wrapped in Silent Shadows - By Adam</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/FortCanning.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/FortCanning.jpeg" alt="FortCanning" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌳 Roots of Time Beneath the Canopy - By Katherine</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Mirror.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Mirror.jpeg" alt="Mirror" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🔲 Reflections That Invert Reality - By Edris</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Airplane.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Airplane.jpeg" alt="Airplane" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">✈️ Flight in Perfect Formation - By Jerald</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/CrystalBall.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/CrystalBall.jpeg" alt="CrystalBall" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🔮 A World Inside Glass - By Vivian</p>
-      </div>
-
-      <div class="col-md-4 reveal">
-        <a href="images/Moon.jpeg" class="glightbox" data-gallery="club-gallery">
-          <img src="images/Moon.jpeg" alt="Moon" class="gallery-img" loading="lazy">
-        </a>
-        <p class="img-caption">🌕 Luminous Guardian of the Night - By Shawn</p>
-      </div>
-    </div>
   </div>
 
-  <!-- GLightbox JS -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    const lightbox = GLightbox({ selector: '.glightbox' });
-
-    // IntersectionObserver for reveal effect
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    reveals.forEach(reveal => observer.observe(reveal));
-  </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-4">
-      <div class="container">
-        <p class="mb-1">© 2025 Photography Club. All rights reserved.</p>
-        
-        <!-- contact information -->
-        <p class="mb-2">
-          For enquiries, please email Ms. Kahlen Ong, our teacher in charge: 
-          <a href="mailto:kahlenongzhiqi@gmail.com" class="text-white">kahlenongzhiqi@gmail.com</a>
-        </p>
-
-        <small>
-          Follow us:
-          <a href="https://www.instagram.com/nyp_photography/" target="_blank" class="text-white" aria-label="Instagram"><i class="bi bi-instagram mx-1"></i></a>
-          <a href="https://www.facebook.com/TheNypPhotographyClub/" target="_blank" class="text-white" aria-label="Facebook"><i class="bi bi-facebook mx-1"></i></a>
-          <a href="https://www.youtube.com/@OfficialNYPTV" target="_blank" class="text-white" aria-label="YouTube"><i class="bi bi-youtube mx-1"></i></a>
-        </small>
-      </div>
-    </footer>
-    
+  <script>const lightbox = GLightbox({ selector: '.glightbox' });</script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
