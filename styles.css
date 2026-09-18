@@ -549,6 +549,17 @@ img {
   flex-shrink: 0;
 }
 
+.event-date-badge.badge-dark {
+  background: #7c6f5b;
+  color: #ffffff;
+  border-right: none;
+}
+
+.event-date-badge.badge-dark .month,
+.event-date-badge.badge-dark .day {
+  color: #ffffff;
+}
+
 .event-date-badge .month {
   font-size: 0.8rem;
   font-weight: 700;
